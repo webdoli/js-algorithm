@@ -12,74 +12,38 @@ const insertionSorted = ( arr ) => {
 }
 
 const selectionSorted = ( arr ) => {
-
     for( let i = 0; i < arr.length-1; i++ ) {
-
         let lowestNumberIndex = i;
-        
         for( let j = i+1; j<arr.length; j++ ) {
-            if( arr[j] < arr[lowestNumberIndex] ) {
-                lowestNumberIndex = j;
-            }
+            if( arr[j] < arr[lowestNumberIndex] ) lowestNumberIndex = j;
         }
-
         if( lowestNumberIndex != i ) {
-            let tmp = arr[i];
-            arr[i] = arr[lowestNumberIndex];
-            arr[lowestNumberIndex] = tmp;
+            [ arr[i], arr[lowestNumberIndex] ] = [ arr[lowestNumberIndex], arr[i]];
         }
-
     }
-
     return arr;
-}
-
-const bubbleSorted = (arr) => {
-
-    for( let i = 0; i < arr.length-1; i++ ) {
-    
-        let pos = i+1;
-        for( let j = 0; j < arr.length-1-i; j++ ) {
-            let k = j+1;
-            if( arr[j] > arr[k] ) {
-                let tmp = arr[k];
-                arr[k] = arr[j];
-                arr[j] = tmp;
-            }
-        }
-        
-    }
-
-    return arr;
-    
 }
 
 const bubbleSorted_ = (arr) => {
-
     let unsorted_until_index = arr.length-1;
     let sorted = false;
-
-    while( !sorted ){
+    while( !sorted ) {
         sorted = true;
         for( let i = 0; i < unsorted_until_index; i++ ) {
             if( arr[i] > arr[i+1] ) {
-                arr[i] = arr[i+1];
-                arr[i+1] = arr[i];
+                [ arr[i], arr[i+1] ] = [ arr[i+1], arr[i] ];
                 sorted = false;
             }
         }
         unsorted_until_index -= 1;
     }
-
     return arr;
-
 }
 
 const test_arr = [ 47, 35, 89, 12, 87, 9, 54, 22, 98, 66, 21, 67, 92, 3, 1, 39 ];
 const test = [ 47, 35, 89, 12 ];
 // console.log('1]삽입 정렬: ', insertionSorted( test_arr ));
-// console.log('2]선택 정렬: ', selectionSorted( test ) );
-console.log('3]버블 정렬: ', bubbleSorted(test_arr) );
+console.log('2]선택 정렬: ', selectionSorted( test ) );
 console.log('4]버블 정렬: ', bubbleSorted_(test));
 
 
@@ -121,4 +85,27 @@ const selectionSorted = ( arr ) => {
 
     return arr;
 }
+*/
+
+/* 비효율적 버블
+const bubbleSorted = (arr) => {
+
+    for( let i = 0; i < arr.length-1; i++ ) {
+    
+        let pos = i+1;
+        for( let j = 0; j < arr.length-1-i; j++ ) {
+            let k = j+1;
+            if( arr[j] > arr[k] ) {
+                let tmp = arr[k];
+                arr[k] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+        
+    }
+
+    return arr;
+    
+}
+
 */
